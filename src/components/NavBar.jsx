@@ -108,7 +108,7 @@ const NavBar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <div>Add Volunteer Post</div>
+                  <Link to='/addVolunteerPost'>Add Volunteer Post</Link>
                 </li>
                 <li>
                   <div>Manage My Post</div>

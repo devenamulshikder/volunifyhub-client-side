@@ -1,7 +1,7 @@
 import logo from '../assets/assignment1102.png'
 const Footer = () => {
   return (
-    <div>
+    <div className='p-4'>
       <footer>
         <div className="max-w-7xl mt-16 mx-auto">
           <div className="lg:flex">
