@@ -1,44 +1,44 @@
-
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import DatePicker from "react-datepicker";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
   const handleAddCraftItem = (event) => {
     event.preventDefault();
     const form = event.target;
     const userName = user.displayName;
     const userEmail = user.email;
 
-    const item_name = form.item_name.value;
-    const subcategory_name = form.subcategory_name.value;
+    const PostTitle = form.PostTitle.value;
+    const Category = form.Category.value;
 
-    const price = form.price.value;
-    const rating = form.rating.value;
+    const Location = form.Location.value;
 
-    const customizable = form.customizable.value;
-    const image = form.image.value;
+    const No_of_volunteers_needed = form.needed.value;
+    const Thumbnail = form.Thumbnail.value;
 
-    const stock = form.stock.value;
-    const processing_time = form.processing_time.value;
+
     const description = form.description.value;
 
     const newCraft = {
       userName,
       userEmail,
-      item_name,
-      subcategory_name,
-      price,
-      rating,
-      customizable,
-      image,
-      stock,
-      processing_time,
+      PostTitle,
+      Category,
+      Location,
+      No_of_volunteers_needed,
+      Thumbnail,
+  
       description,
     };
+    console.log(newCraft);
 
-    fetch("https://pottery-palette.vercel.app/pottery", {
+    fetch("", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -62,63 +62,59 @@ const AddVolunteer = () => {
       <form onSubmit={handleAddCraftItem}>
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
-            <label className="label"> Item Name</label>
+            <label className="label"> Post Title</label>
             <input
               type="text"
-              name="item_name"
-              placeholder="Item Name"
+              name="PostTitle"
+              placeholder="Post Title"
               required
               className="input input-bordered w-full"
             />
           </div>
 
           <div className="md:w-1/2">
-            <label className="label"> subcategory_Name</label>
+            <label className="label">Category</label>
             <select
               type="text"
-              name="subcategory_name"
+              name="Category"
               required
               className=" p-3 rounded-lg border w-full"
             >
-              <option>Claymade pottery</option>
-              <option>Stoneware</option>
-              <option>Porcelain</option>
-              <option>Terra Cotta</option>
-              <option>Ceramics Architectural</option>
-              <option>Home decor pottery</option>
+              <option>Healthcare</option>
+              <option>Education</option>
+              <option>Social service</option>
+              <option>Animal welfare</option>
             </select>
           </div>
         </div>
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
-            <label className="label">Price</label>
+            <label className="label">Location</label>
             <input
               type="text"
-              name="price"
-              placeholder="Enter Price"
+              name="Location"
+              placeholder="Location"
               required
               className="input input-bordered w-full"
             />
           </div>
 
           <div className="md:w-1/2">
-            <label className="label">Rating</label>
-            <input
-              type="text"
-              name="rating"
-              placeholder="Enter Ratings"
-              required
-              className="input input-bordered w-full"
+            <label className="label">Deadline</label>
+            <DatePicker
+              className="input input-bordered"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
             />
           </div>
         </div>
         {/* form cetagory row  */}
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
-            <label className="label">Customizable:</label>
+            <label className="label">No. of volunteers needed :</label>
             <select
               type="text"
-              name="customizable"
+              name="needed"
               required
               className="p-3 border rounded-lg w-full"
             >
@@ -128,11 +124,11 @@ const AddVolunteer = () => {
           </div>
 
           <div className="md:w-1/2">
-            <label className="label">Image</label>
+            <label className="label">Thumbnail</label>
             <input
               type="text"
-              name="image"
-              placeholder="Enter Image_URL"
+              name="Thumbnail"
+              placeholder="Thumbnail"
               required
               className="input input-bordered w-full"
             />
@@ -141,23 +137,20 @@ const AddVolunteer = () => {
 
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
-            <label className="label">Stock Status:</label>
-            <select
+            <label className="label">User Name</label>
+            <input
+              defaultValue={user?.displayName}
               type="text"
-              name="stock"
-              required
-              className="p-3 border rounded-lg w-full"
-            >
-              <option>In stock</option>
-              <option>Made to Order</option>
-            </select>
+              disabled
+              className="input input-bordered w-full"
+            />
           </div>
           <div className="md:w-1/2">
-            <label className="label">Processing Time:</label>
+            <label className="label">User email</label>
             <input
               type="text"
-              name="processing_time"
-              required
+              defaultValue={user?.email}
+              disabled
               placeholder="Enter processing time (hour)"
               className="input input-bordered w-full"
             />
@@ -165,7 +158,7 @@ const AddVolunteer = () => {
         </div>
         {/* photo url*/}
         <div className="mb-6">
-          <label>Message</label>
+          <label>Description</label>
           <textarea
             className="textarea textarea-bordered w-full"
             name="description"
@@ -175,8 +168,8 @@ const AddVolunteer = () => {
         </div>
         <input
           type="submit"
-          value="Add Craft Item"
-          className="btn btn-block bg-[#38b469]"
+          value="Add Post"
+          className="btn btn-block bg-[#7ec242]"
         />
       </form>
     </div>

@@ -33,13 +33,13 @@ const NavBar = () => {
         <div className="flex-1">
           <div className="flex gap-2 items-center">
             <div className="font-bold flex flex-row items-center gap-5">
-              <Link to='/'>
+              <Link to="/">
                 {" "}
                 <img className="w-12 mt-2" src={logo} alt="" />
               </Link>
               <p>
                 <span className="hidden md:flex lg:flex lg:text-2xl md:text-xl">
-                  Volunify Hub
+                  Volunify <span className="text-[#7ec242]">Hub</span>
                 </span>
               </p>
             </div>
@@ -74,17 +74,17 @@ const NavBar = () => {
 
             {!user && (
               <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "pb-1 border-b-0 text-[#7ec242] lg:border-b-2 border-[#73cac2] font-bold"
-                    : "font-bold "
-                }
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "pb-1 border-b-0 text-[#7ec242] lg:border-b-2 border-[#73cac2] font-bold"
+                      : "font-bold "
+                  }
+                  to="/login"
+                >
+                  Login
+                </NavLink>
+              </li>
             )}
           </ul>
 
@@ -108,7 +108,7 @@ const NavBar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to='/addVolunteerPost'>Add Volunteer Post</Link>
+                  <Link to="/addVolunteerPost">Add Volunteer Post</Link>
                 </li>
                 <li>
                   <div>Manage My Post</div>
