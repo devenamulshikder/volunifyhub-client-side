@@ -26,6 +26,17 @@ const Register = () => {
     const name = form.name.value;
     const photo = form.photo.value;
     const pass = form.password.value;
+
+    if (pass.length < 6) {
+        toast.error("Please your password should be at least 6 characters of longer");
+        return;
+    } else if (!/[A-Z]/.test(pass)) {
+        toast.error(
+          "Your password should have at least one upper case characters."
+        );
+        return;
+    }
+
     try {
       const result = await createUser(email, pass);
       console.log(result);
@@ -56,7 +67,7 @@ const Register = () => {
           </div>
 
           <p className="mt-3 text-xl text-center text-gray-600 ">
-            Get Your Free Account Now.
+            Please Register On This Sites.
           </p>
 
           <div
