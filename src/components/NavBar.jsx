@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/assignment1102.png";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [theme, setTheme] = useState("light");
@@ -38,7 +39,7 @@ const NavBar = () => {
               <div>Need Volunteer Page</div>
             </li>
             <li>
-              <div>Login</div>
+              <Link to='/login'>Login</Link>
             </li>
           </ul>
 
