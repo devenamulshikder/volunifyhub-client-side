@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <div>
       {/* navbar */}
-      <div className="shadow-lg sticky">
+      <div className="shadow-lg sticky z-50">
         <div className="max-w-7xl mx-auto">
           <NavBar />
         </div>

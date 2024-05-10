@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 const Banner = () => {
   return (
-    <div>
+    <div >
       <Swiper
         pagination={{
           dynamicBullets: true,
