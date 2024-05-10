@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 const Banner = () => {
   return (
-    <div >
+    <div>
       <Swiper
         pagination={{
           dynamicBullets: true,
@@ -41,22 +41,20 @@ const Banner = () => {
                 </div>
                 <div className=" relative ">
                   <h2 className="text-4xl lg:text-6xl ml-10 font-bold lato text-white text-center mt-32">
-                
-                      <p>
-                        There is a Great Value For Doing <br />
-                        Good to Others
-                      </p>
-                  
+                    <p>
+                      There is a Great Value For Doing <br />
+                      Good to Others
+                    </p>
                   </h2>
                   <p className="text-xl lg:text-3xl mt-8 inter text-white text-center ml-10">
-                    <span style={{ color: "#38b469", fontWeight: "bold" }}>
+                    <span style={{ color: "#7ec242", fontWeight: "bold" }}>
                       {/* Style will be inherited from the parent element */}
                       <Typewriter
                         words={[
                           "Welcome",
                           "This",
                           "Season ",
-                          "with Our Sites!",
+                          "with Our Volunteers!",
                         ]}
                         loop={5}
                         cursor
@@ -90,14 +88,14 @@ const Banner = () => {
                     There is a Great Value For Doing <br /> Good to Others
                   </h2>
                   <p className="text-xl lg:text-3xl mt-8 inter text-white text-center ml-10">
-                    <span style={{ color: "#38b469", fontWeight: "bold" }}>
+                    <span style={{ color: "#7ec242", fontWeight: "bold" }}>
                       {/* Style will be inherited from the parent element */}
                       <Typewriter
                         words={[
                           "Welcome",
                           "This",
                           "Season ",
-                          "with Our Sites!",
+                          "with Our Volunteers!",
                         ]}
                         loop={5}
                         cursor
@@ -131,14 +129,14 @@ const Banner = () => {
                     There is a Great Value For Doing <br /> Good to Others
                   </h2>
                   <p className="text-xl lg:text-3xl mt-8 inter text-white text-center ml-10">
-                    <span style={{ color: "#38b469", fontWeight: "bold" }}>
+                    <span style={{ color: "#7ec242", fontWeight: "bold" }}>
                       {/* Style will be inherited from the parent element */}
                       <Typewriter
                         words={[
                           "Welcome",
                           "This",
                           "Season ",
-                          "with Our Sites!",
+                          "with Our Volunteers!",
                         ]}
                         loop={5}
                         cursor

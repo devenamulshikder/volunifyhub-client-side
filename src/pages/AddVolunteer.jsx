@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
@@ -18,36 +19,30 @@ const AddVolunteer = () => {
     const Category = form.Category.value;
 
     const Location = form.Location.value;
+    const date = startDate;
 
     const No_of_volunteers_needed = form.needed.value;
     const Thumbnail = form.Thumbnail.value;
 
-
     const description = form.description.value;
 
-    const newCraft = {
+    const newVolunteer = {
       userName,
       userEmail,
       PostTitle,
       Category,
       Location,
+      date,
       No_of_volunteers_needed,
       Thumbnail,
-  
       description,
     };
-    console.log(newCraft);
 
-    fetch("", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newCraft),
-    })
-      .then((res) => res.json())
+    axios
+      .post("http://localhost:9000/volunteerPost", newVolunteer)
+
       .then((data) => {
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           form.reset("");
           toast.success("Successfully Craft Added!");
         }
@@ -55,7 +50,7 @@ const AddVolunteer = () => {
   };
 
   return (
-    <div className="bg-[#f4f3f0b0] max-w-7xl mx-auto p-5 lg:p-10 rounded-xl mt-8 lg:mt-16">
+    <div className=" max-w-7xl mx-auto p-5 lg:p-10 rounded-xl mt-8 lg:mt-16">
       <h1 className="text-4xl font-extrabold text-center mb-5">
         Add Volunteer Post Page
       </h1>
