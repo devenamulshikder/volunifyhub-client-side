@@ -1,41 +1,40 @@
-// import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import logo from "../../assets/assignment1102.png";
 import loginImg from "../../assets/image/login.jpg";
-// import { useContext } from "react";
-// import { AuthContext } from "../../provider/AuthProvider";
-// import toast from "react-hot-toast";
-
-import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
-//   const navigate = useNavigate();
-//   const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  //   const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   // google login
-//   const handleGoogleLogin = async () => {
-//     try {
-//       await signInWithGoogle();
-//       toast.success("Signin Successful");
-//       navigate("/");
-//     } catch (err) {
-//       toast.error(err?.message);
-//     }
-//   };
-//   // email login
-//   const handleSignIn = async (e) => {
-//     e.preventDefault();
-//     const form = e.target;
-//     const email = form.email.value;
-//     const pass = form.password.value;
-//     try {
-//       const result = await signIn(email, pass);
-//       console.log(result);
-//       navigate("/");
-//       toast.success("Signin Successful");
-//     } catch (err) {
-//       toast.error(err?.message);
-//     }
-//   };
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
+      toast.success("Signin Successful");
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.message);
+    }
+  };
+  //   // email login
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const pass = form.password.value;
+    try {
+      const result = await signIn(email, pass);
+      console.log(result);
+      navigate("/");
+      toast.success("Login Successful");
+    } catch (err) {
+      toast.error(err?.message);
+    }
+  };
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
@@ -56,7 +55,7 @@ const Login = () => {
           </p>
 
           <div
-            // onClick={handleGoogleLogin}
+            onClick={handleGoogleLogin}
             className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 "
           >
             <div className="px-4 py-2">
@@ -94,7 +93,7 @@ const Login = () => {
 
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
-          <form >
+          <form onSubmit={handleSignIn}>
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 "

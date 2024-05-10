@@ -23,7 +23,7 @@ const NavBar = () => {
           <div className="flex gap-2 items-center">
             <div className="font-bold flex flex-row items-center gap-5">
               <img className="w-12 mt-2" src={logo} alt="" />
-              <p >
+              <p>
                 <span className="hidden md:flex lg:flex">Volunify Hub</span>
               </p>
             </div>
@@ -39,7 +39,7 @@ const NavBar = () => {
               <div>Need Volunteer Page</div>
             </li>
             <li>
-              <Link to='/login'>Login</Link>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
 
