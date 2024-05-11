@@ -3,7 +3,7 @@ import { Zoom } from "react-awesome-reveal";
 const AboutUs = () => {
   return (
     <div
-      className="bg-no-repeat"
+      className="bg-no-repeat min-w-full"
       style={{
         backgroundImage: "url(https://i.ibb.co/470mts4/assignment111.jpg)",
       }}

@@ -17,14 +17,14 @@ const Home = () => {
           <VolunteerNeeds />
         </div>
 
-        <div className="text-center mt-6 md:mt-8 lg:mt-14">
+        <div className="text-center mt-6 md:mt-10 lg:mt-16">
           <button className="text-lg p-2 before:absolute before:block before:inset-0 before:-z-10 before:bg-[#7ec242] text-white after:block hover:after:w-full after:w-0 after:hover:left-0 after:right-0 after:top-0 after:h-full after:-z-10 after:duration-300 after:bg-green-800 after:absolute relative inline-block">
             <Link to="/needVolunteer">See All Volunteers</Link>
           </button>
         </div>
       </div>
-      <VolunteersBrighter/>
-      <AboutUs/>
+      <VolunteersBrighter />
+      <AboutUs />
     </>
   );
 };

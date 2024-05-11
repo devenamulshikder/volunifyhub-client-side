@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Fade, Zoom } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 
 const VolunteerNeeds = () => {
   const [allPost, setAllPost] = useState([]);
@@ -43,9 +44,9 @@ const VolunteerNeeds = () => {
                 />
               </Fade>
 
-              <div className="flex items-center justify-end px-4 py-2 ">
-                <button className=" btn px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform  rounded bg-[#7ec242] focus:outline-none">
-                  View Details
+              <div className="flex items-center justify-end px-4 py-2 mt-1">
+                <button className=" btn px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform  rounded hover:text-[#7ec242] bg-[#7ec242] focus:outline-none">
+                  <Link to={`/volunteerNeedDetails/${post._id}`}>View Details</Link>
                 </button>
               </div>
             </div>
