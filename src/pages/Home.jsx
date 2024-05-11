@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import VolunteerNeeds from "../components/VolunteerNeeds";
 import "animate.css";
 import VolunteersBrighter from "../components/VolunteersBrighter";
+import AboutUs from "../components/AboutUs";
 const Home = () => {
   return (
     <>
@@ -23,6 +24,7 @@ const Home = () => {
         </div>
       </div>
       <VolunteersBrighter/>
+      <AboutUs/>
     </>
   );
 };
