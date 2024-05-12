@@ -43,7 +43,9 @@ const NeedVolunteer = () => {
                 </p>
                 <div className="flex justify-end mt-4">
                   <button className="btn hover:bg-[#7ec242] text-[#7ec242] bg-gray-200 hover:text-slate-200">
-                    <Link>View Details</Link>
+                    <Link to={`/VolunteerNeedPostDetailsPage/${volunteer?._id}`}>
+                      View Details
+                    </Link>
                   </button>
                 </div>
               </div>

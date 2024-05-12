@@ -113,9 +113,6 @@ const NavBar = () => {
                 <li>
                   <div>Manage My Post</div>
                 </li>
-                <li>
-                  <div>My Volunteer Requested Post</div>
-                </li>
                 <li className="mt-2">
                   <button
                     onClick={handleLogOut}
