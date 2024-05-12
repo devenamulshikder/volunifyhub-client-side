@@ -111,7 +111,7 @@ const NavBar = () => {
                   <Link to="/addVolunteerPost">Add Volunteer Post</Link>
                 </li>
                 <li>
-                  <div>Manage My Post</div>
+                  <Link to="/manageMyPost/:email">Manage My Post</Link>
                 </li>
                 <li className="mt-2">
                   <button

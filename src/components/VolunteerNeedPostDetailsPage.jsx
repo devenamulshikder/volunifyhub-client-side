@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const VolunteerNeedPostDetailsPage = () => {
   const needVolunteerPost = useLoaderData();
@@ -38,7 +40,7 @@ const VolunteerNeedPostDetailsPage = () => {
 
     const description = form.description.value;
 
-    const newVolunteer = {
+    const requestVolunteer = {
       userName,
       userEmail,
       PostTitle,
@@ -48,8 +50,19 @@ const VolunteerNeedPostDetailsPage = () => {
       No_of_volunteers_needed,
       Thumbnail,
       description,
+      status:'Requested'
     };
-    console.log(newVolunteer);
+    
+
+    axios
+      .post("http://localhost:9000/volunteerRequested", requestVolunteer)
+      .then((data) => {
+        if (data.data.insertedId) {
+          form.reset("");
+          toast.success("Successfully Craft Added!");
+        }
+      });
+
   };
 
   return (
@@ -111,8 +124,12 @@ const VolunteerNeedPostDetailsPage = () => {
                     <div className="modal-action">
                       <div className=" p-5 lg:p-10 rounded-xl">
                         <h1 className="text-4xl font-extrabold text-center mb-5">
-                          Add Volunteer Post Page
+                          Be a Volunteer..!
                         </h1>
+
+
+
+
 
                         <form onSubmit={handleBeAVolunteer}>
                           <div className="md:flex gap-5 mb-6">
