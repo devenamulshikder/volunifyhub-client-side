@@ -9,7 +9,7 @@ import axios from "axios";
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-  const handleAddCraftItem = (event) => {
+  const handleAddVolunteerItem = (event) => {
     event.preventDefault();
     const form = event.target;
     const userName = user.displayName;
@@ -54,7 +54,7 @@ const AddVolunteer = () => {
       <h1 className="text-4xl font-extrabold text-center mb-5">
         Add Volunteer Post Page
       </h1>
-      <form onSubmit={handleAddCraftItem}>
+      <form onSubmit={handleAddVolunteerItem}>
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
             <label className="label"> Post Title</label>
@@ -107,15 +107,15 @@ const AddVolunteer = () => {
         <div className="md:flex gap-5 mb-6">
           <div className="md:w-1/2">
             <label className="label">No. of volunteers needed :</label>
-            <select
-              type="text"
+
+            <input
+              type="number"
+              min={0}
               name="needed"
+              placeholder="No. Of Volunteer Need"
               required
-              className="p-3 border rounded-lg w-full"
-            >
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+              className="input input-bordered w-full"
+            />
           </div>
 
           <div className="md:w-1/2">
