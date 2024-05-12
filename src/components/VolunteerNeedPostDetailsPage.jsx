@@ -49,6 +49,7 @@ const VolunteerNeedPostDetailsPage = () => {
       Thumbnail,
       description,
     };
+    console.log(newVolunteer);
   };
 
   return (
@@ -105,170 +106,171 @@ const VolunteerNeedPostDetailsPage = () => {
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
                 >
+                  {" "}
                   <div className="modal-box">
                     <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <div className=" p-5 lg:p-10 rounded-xl">
-                          <h1 className="text-4xl font-extrabold text-center mb-5">
-                            Add Volunteer Post Page
-                          </h1>
-                          <form onSubmit={handleBeAVolunteer}>
-                            <div className="md:flex gap-5 mb-6">
-                              <div className="md:w-1/2">
-                                <label className="label"> Post Title</label>
-                                <input
-                                  type="text"
-                                  name="PostTitle"
-                                  placeholder="Post Title"
-                                  defaultValue={PostTitle}
-                                  disabled
-                                  required
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
+                      <div className=" p-5 lg:p-10 rounded-xl">
+                        <h1 className="text-4xl font-extrabold text-center mb-5">
+                          Add Volunteer Post Page
+                        </h1>
 
-                              <div className="md:w-1/2">
-                                <label className="label">Category</label>
-                                <select
-                                  type="text"
-                                  name="Category"
-                                  defaultValue={Category}
-                                  disabled
-                                  required
-                                  className=" p-3 rounded-lg border w-full"
-                                >
-                                  <option>Healthcare</option>
-                                  <option>Education</option>
-                                  <option>Social service</option>
-                                  <option>Animal welfare</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="md:flex gap-5 mb-6">
-                              <div className="md:w-1/2">
-                                <label className="label">Location</label>
-                                <input
-                                  type="text"
-                                  name="Location"
-                                  defaultValue={Location}
-                                  disabled
-                                  placeholder="Location"
-                                  required
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-
-                              <div className="md:w-1/2">
-                                <label className="label">Deadline</label>
-                                <DatePicker
-                                  className="input input-bordered"
-                                  selected={date}
-                                  disabled
-                                  onChange={(date) => setStartDate(date)}
-                                />
-                              </div>
-                            </div>
-                            {/* form cetagory row  */}
-                            <div className="md:flex gap-5 mb-6">
-                              <div className="md:w-1/2">
-                                <label className="label">
-                                  No. volunteers needed:
-                                </label>
-                                <input
-                                  type="number"
-                                  min={0}
-                                  name="needed"
-                                  placeholder="No. Of Volunteer Need"
-                                  required
-                                  defaultValue={No_of_volunteers_needed}
-                                  disabled
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-
-                              <div className="md:w-1/2">
-                                <label className="label">Thumbnail</label>
-                                <input
-                                  type="text"
-                                  name="Thumbnail"
-                                  placeholder="Thumbnail"
-                                  defaultValue={Thumbnail}
-                                  disabled
-                                  required
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-                            </div>
-
-                            {/* Current User */}
-                            <div className="md:flex gap-5 mb-6">
-                              <div className="md:w-1/2">
-                                <label className="label">User Name</label>
-                                <input
-                                  defaultValue={user?.displayName}
-                                  type="text"
-                                  disabled
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-                              <div className="md:w-1/2">
-                                <label className="label">User email</label>
-                                <input
-                                  type="text"
-                                  defaultValue={user?.email}
-                                  disabled
-                                  placeholder="Enter processing time (hour)"
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-                            </div>
-
-                            {/* Organizer */}
-
-                            <div className="md:flex gap-5 mb-6">
-                              <div className="md:w-1/2">
-                                <label className="label">Organizer Name</label>
-                                <input
-                                  defaultValue={userName}
-                                  type="text"
-                                  disabled
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-                              <div className="md:w-1/2">
-                                <label className="label">Organizer Email</label>
-                                <input
-                                  type="text"
-                                  defaultValue={userEmail}
-                                  disabled
-                                  placeholder="Enter processing time (hour)"
-                                  className="input input-bordered w-full"
-                                />
-                              </div>
-                            </div>
-
-                            {/* photo url*/}
-                            <div className="mb-6">
-                              <label>Suggestion</label>
-                              <textarea
-                                className="textarea textarea-bordered w-full"
-                                name="description"
+                        <form onSubmit={handleBeAVolunteer}>
+                          <div className="md:flex gap-5 mb-6">
+                            <div className="md:w-1/2">
+                              <label className="label"> Post Title</label>
+                              <input
+                                type="text"
+                                name="PostTitle"
+                                placeholder="Post Title"
+                                defaultValue={PostTitle}
+                                disabled
                                 required
-                                placeholder="Sort Description"
-                              ></textarea>
+                                className="input input-bordered w-full"
+                              />
                             </div>
-                            <input
-                              type="submit"
-                              value="Request"
-                              className="btn btn-block text-black hover:text-[#7ec242] bg-[#7ec242]"
-                            />
-                          </form>
-                        </div>
 
-                        <button className="btn  ">Close</button>
-                      </form>
+                            <div className="md:w-1/2">
+                              <label className="label">Category</label>
+                              <select
+                                type="text"
+                                name="Category"
+                                defaultValue={Category}
+                                disabled
+                                required
+                                className=" p-3 rounded-lg border w-full"
+                              >
+                                <option>Healthcare</option>
+                                <option>Education</option>
+                                <option>Social service</option>
+                                <option>Animal welfare</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="md:flex gap-5 mb-6">
+                            <div className="md:w-1/2">
+                              <label className="label">Location</label>
+                              <input
+                                type="text"
+                                name="Location"
+                                defaultValue={Location}
+                                disabled
+                                placeholder="Location"
+                                required
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+
+                            <div className="md:w-1/2">
+                              <label className="label">Deadline</label>
+                              <DatePicker
+                                className="input input-bordered"
+                                selected={date}
+                                disabled
+                                onChange={(date) => setStartDate(date)}
+                              />
+                            </div>
+                          </div>
+                          {/* form cetagory row  */}
+                          <div className="md:flex gap-5 mb-6">
+                            <div className="md:w-1/2">
+                              <label className="label">
+                                No. volunteers needed:
+                              </label>
+                              <input
+                                type="number"
+                                min={0}
+                                name="needed"
+                                placeholder="No. Of Volunteer Need"
+                                required
+                                defaultValue={No_of_volunteers_needed}
+                                disabled
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+
+                            <div className="md:w-1/2">
+                              <label className="label">Thumbnail</label>
+                              <input
+                                type="text"
+                                name="Thumbnail"
+                                placeholder="Thumbnail"
+                                defaultValue={Thumbnail}
+                                disabled
+                                required
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Current User */}
+                          <div className="md:flex gap-5 mb-6">
+                            <div className="md:w-1/2">
+                              <label className="label">User Name</label>
+                              <input
+                                defaultValue={user?.displayName}
+                                type="text"
+                                disabled
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+                            <div className="md:w-1/2">
+                              <label className="label">User email</label>
+                              <input
+                                type="text"
+                                defaultValue={user?.email}
+                                disabled
+                                placeholder="Enter processing time (hour)"
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Organizer */}
+
+                          <div className="md:flex gap-5 mb-6">
+                            <div className="md:w-1/2">
+                              <label className="label">Organizer Name</label>
+                              <input
+                                defaultValue={userName}
+                                type="text"
+                                disabled
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+                            <div className="md:w-1/2">
+                              <label className="label">Organizer Email</label>
+                              <input
+                                type="text"
+                                defaultValue={userEmail}
+                                disabled
+                                placeholder="Enter processing time (hour)"
+                                className="input input-bordered w-full"
+                              />
+                            </div>
+                          </div>
+
+                          {/* photo url*/}
+                          <div className="mb-6">
+                            <label>Suggestion</label>
+                            <textarea
+                              className="textarea textarea-bordered w-full"
+                              name="description"
+                              required
+                              placeholder="Have you any suggestion..?"
+                            ></textarea>
+                          </div>
+                          <input
+                            type="submit"
+                            value="Request"
+                            className="btn btn-block text-black hover:text-[#7ec242] bg-[#7ec242]"
+                          />
+                        </form>
+                      </div>
                     </div>
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn  ">Close</button>
+                    </form>
                   </div>
                 </dialog>
               </div>
