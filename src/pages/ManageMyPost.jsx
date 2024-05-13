@@ -3,15 +3,54 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { MdBrowserUpdated } from "react-icons/md";
 import { FcDeleteDatabase } from "react-icons/fc";
+import Swal from "sweetalert2";
 const ManageMyPost = () => {
   const { user } = useContext(AuthContext);
+
   const [filters, setFilter] = useState([]);
+
+  const [myList, setMyList] = useState([]);
+  
   useEffect(() => {
     fetch(`http://localhost:9000/manageMyPost/${user.email}`)
       .then((res) => res.json())
-      .then((data) => setFilter(data));
+      .then((data) => {
+        setFilter(data);
+        setMyList(data);
+      });
   }, [user.email]);
-  console.log(filters);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:9000/updatePage/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Craft Item has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+        const remaining = myList.filter((item) => item._id !== id);
+        setMyList(remaining);
+      }
+    });
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center my-12 md:my-12 lg:my-16">
@@ -38,14 +77,20 @@ const ManageMyPost = () => {
                 <td>{new Date(filter.date).toLocaleDateString()}</td>
                 <td>
                   <button className="btn bg-[#7ec242] text-black hover:text-[#7ec242]">
-                    <Link className="flex gap-1">
+                    <Link
+                      to={`/updatePage/${filter._id}`}
+                      className="flex gap-1"
+                    >
                       <MdBrowserUpdated />
                       Update
                     </Link>
                   </button>
                 </td>
                 <td>
-                  <button className="btn bg-[#7ec242] text-black hover:text-[#7ec242]">
+                  <button
+                    onClick={() => handleDelete(filter._id)}
+                    className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
+                  >
                     <Link className="flex gap-1">
                       <FcDeleteDatabase />
                       Delete

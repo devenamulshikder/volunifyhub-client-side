@@ -10,6 +10,7 @@ import NeedVolunteer from "../pages/NeedVolunteer";
 import VolunteerNeedDetails from "../components/VolunteerNeedDetails";
 import VolunteerNeedPostDetailsPage from "../components/VolunteerNeedPostDetailsPage";
 import ManageMyPost from "../pages/ManageMyPost";
+import UpdatePage from "../pages/UpdatePage";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,15 @@ const router = createBrowserRouter([
           fetch(
             `http://localhost:9000/VolunteerNeedPostDetailsPage/${params.id}`
           ),
+      },
+      {
+        path: "/updatePage/:id",
+        element: (
+          <PrivateRoute>
+            <UpdatePage />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:9000/updatePage/${params.id}`),
       },
     ],
   },
