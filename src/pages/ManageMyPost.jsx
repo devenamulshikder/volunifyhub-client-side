@@ -115,7 +115,7 @@ const ManageMyPost = () => {
           </h1>
           <p className="text-sm font-semibold">Please add first</p>
           <Link to="/addVolunteerPost">
-            <button className="rounded-md border bg-[#9ADE7B] font-bold px-2 md:px-4 py-2  duration-300 hover:bg-gray-200">
+            <button className="rounded-md border bg-[#7ec242] text-black font-bold px-2 md:px-4 py-2  duration-300 hover:bg-gray-200">
               Add Volunteer Post
             </button>
           </Link>
