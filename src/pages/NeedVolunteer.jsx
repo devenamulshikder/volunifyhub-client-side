@@ -34,10 +34,10 @@ const NeedVolunteer = () => {
       <Helmet>
         <title>Volunify || Need Volunteer Page</title>
       </Helmet>
-      <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center my-8 md:my-12">
+      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center my-8 md:my-12">
         Need Volunteer Page
       </h1>
-      <form onSubmit={handleSearch} className="join flex justify-end my-8">
+      <form onSubmit={handleSearch} className="join flex justify-center md:justify-end px-5 lg:justify-end my-8">
         <div>
           <div>
             <input

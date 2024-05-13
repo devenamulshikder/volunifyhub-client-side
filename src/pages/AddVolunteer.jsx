@@ -58,7 +58,7 @@ const AddVolunteer = () => {
       <Helmet>
         <title>Volunify || Add Volunteer Post</title>
       </Helmet>
-      <h1 className="text-4xl font-extrabold text-center mb-5">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-5">
         Add Volunteer Post Page
       </h1>
       <form onSubmit={handleAddVolunteerItem}>
@@ -171,7 +171,7 @@ const AddVolunteer = () => {
         <input
           type="submit"
           value="Add Post"
-          className="btn btn-block bg-[#7ec242]"
+          className="btn btn-block bg-[#7ec242] text-black hover:text-gray-400"
         />
       </form>
     </div>

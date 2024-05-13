@@ -15,7 +15,7 @@ const Home = () => {
     </Helmet>
       <Banner />
       <div className="max-w-7xl mx-auto my-8 md:my-12 lg:my-16">
-        <h1 className="text-lg md:text-2xl lg:text-5xl text-center lato font-bold">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl text-center lato font-bold">
           Volunteer Needs Now Section
         </h1>
 

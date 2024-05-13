@@ -13,7 +13,7 @@ const Footer = () => {
                 </div>
 
                 <p className="max-w-sm mt-2 text-gray-600 dark:text-gray-600">
-                  Join 31,000+ other and never miss out on new tips, tutorials,
+                  Join 31,000+ other and never miss out on new volunteer, tutorials,
                   and more.
                 </p>
 
@@ -69,7 +69,7 @@ const Footer = () => {
             <div className="mt-6 lg:mt-0 lg:flex-1">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className=" uppercase ">
                     About
                   </h3>
                   <a
@@ -93,14 +93,14 @@ const Footer = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className="uppercase">
                     Blog
                   </h3>
                   <a
                     href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-600 hover:underline"
                   >
-                    Tec
+                    Helping
                   </a>
                   <a
                     href="#"
@@ -117,7 +117,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className=" uppercase">
                     Products
                   </h3>
                   <a
@@ -130,18 +130,18 @@ const Footer = () => {
                     href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-600 hover:underline"
                   >
-                    Aperion UI
+                    Services
                   </a>
                   <a
                     href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-600 hover:underline"
                   >
-                    Meraki UI
+                    Helpful Volunteer
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className="uppercase">
                     Contact
                   </h3>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-600 hover:underline">
@@ -159,7 +159,7 @@ const Footer = () => {
 
         <div>
           <p className="text-center text-gray-600 dark:text-gray-600">
-            © Brand 2020 - All rights reserved
+            © Brand 2024 - All rights reserved
           </p>
         </div>
       </footer>

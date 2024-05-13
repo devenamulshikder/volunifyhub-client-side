@@ -5,7 +5,7 @@ import { Zoom } from "react-awesome-reveal";
 const VolunteersBrighter = () => {
   return (
     <div className="my-8 md:my-12 lg:my-16 text-center max-w-7xl mx-auto">
-      <h1 className="text-xl md:text-3xl lg:text-5xl font-bold">
+      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
         Volunteers Make Each Day Brighter
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 md:mt-12 lg:mt-16">
