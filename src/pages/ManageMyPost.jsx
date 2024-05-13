@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { MdBrowserUpdated } from "react-icons/md";
 import { FcDeleteDatabase } from "react-icons/fc";
 import Swal from "sweetalert2";
+import MyVolunteerRequestPost from "../components/MyVolunteerRequestPost";
 const ManageMyPost = () => {
   const { user } = useContext(AuthContext);
 
   const [filters, setFilter] = useState([]);
 
   const [myList, setMyList] = useState([]);
-  
+
   useEffect(() => {
     fetch(`http://localhost:9000/manageMyPost/${user.email}`)
       .then((res) => res.json())
@@ -43,10 +44,10 @@ const ManageMyPost = () => {
                 text: "Your Craft Item has been deleted.",
                 icon: "success",
               });
+              const remaining = filters.filter((item) => item._id !== id);
+              setMyList(remaining);
             }
           });
-        const remaining = myList.filter((item) => item._id !== id);
-        setMyList(remaining);
       }
     });
   };
@@ -70,7 +71,7 @@ const ManageMyPost = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {filters.map((filter) => (
+            {myList.map((filter) => (
               <tr key={filter?._id}>
                 <td>{filter?.PostTitle}</td>
                 <td>{filter?.Category}</td>
@@ -113,13 +114,15 @@ const ManageMyPost = () => {
             You do not added any volunteer post
           </h1>
           <p className="text-sm font-semibold">Please add first</p>
-          <Link to="/addArtCraft">
+          <Link to="/addVolunteerPost">
             <button className="rounded-md border bg-[#9ADE7B] font-bold px-2 md:px-4 py-2  duration-300 hover:bg-gray-200">
               Add Volunteer Post
             </button>
           </Link>
         </div>
       )}
+
+      <MyVolunteerRequestPost />
     </div>
   );
 };
