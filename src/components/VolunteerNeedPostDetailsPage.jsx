@@ -270,7 +270,7 @@ const VolunteerNeedPostDetailsPage = () => {
                           <div className="mb-6">
                             <label>Suggestion</label>
                             <textarea
-                              className="textarea textarea-bordered w-full"
+                              className="textarea mt-2 textarea-bordered w-full"
                               name="description"
                               required
                               placeholder="Have you any suggestion..?"

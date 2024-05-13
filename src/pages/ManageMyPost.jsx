@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-
+import { Link } from "react-router-dom";
+import { MdBrowserUpdated } from "react-icons/md";
+import { FcDeleteDatabase } from "react-icons/fc";
 const ManageMyPost = () => {
   const { user } = useContext(AuthContext);
   const [filters, setFilter] = useState([]);
@@ -12,46 +14,67 @@ const ManageMyPost = () => {
   console.log(filters);
   return (
     <div className="max-w-7xl mx-auto">
-      <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center my-8 md:my-12 lg:my-16">
-        Manage my post page
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center my-12 md:my-12 lg:my-16">
+        My Need Volunteer Post
       </h1>
-      {/* card */}
-      <div>
-        {filters.map((filter) => (
-          <div className="hover:scale-105 duration-500" key={filter._id}>
-            <section className="lg:flex lg:justify-center mb-8 lg:mb-12">
-              <div className="overflow-hidden lg:mx-8 lg:flex lg:max-w-6xl lg:w-full lg:shadow-xl lg:rounded-xl">
-                <div className="lg:w-1/2">
-                  <div
-                    className="h-64 bg-cover lg:h-full"
-                    style={{
-                      backgroundImage: `url(${filter?.Thumbnail})`,
-                    }}
-                  ></div>
-                </div>
-                <div className="max-w-xl px-6 py-10 lg:max-w-5xl lg:w-1/2">
-                  <h2 className="text-2xl font-semibold md:text-3xl">
-                    {filter?.PostTitle}
-                  </h2>
-                  <p className="mt-4">{filter.description}</p>
-                  <div className="mt-3 space-y-2">
-                    <p className="font-semibold">Category: {filter.Category}</p>
-                    <p className="font-semibold">
-                      Date: Date: {new Date(filter?.date).toLocaleDateString()}
-                    </p>
-
-                    <p className="font-semibold">Location: {filter.Location}</p>
-                    <p className="font-semibold">
-                      No. of Needed Volunteer :{" "}
-                      {filter?.No_of_volunteers_needed}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        ))}
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead className="text-lg">
+            <tr>
+              <th>Post Title</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row 1 */}
+            {filters.map((filter) => (
+              <tr key={filter?._id}>
+                <td>{filter?.PostTitle}</td>
+                <td>{filter?.Category}</td>
+                <td>{new Date(filter.date).toLocaleDateString()}</td>
+                <td>
+                  <button className="btn bg-[#7ec242] text-black hover:text-[#7ec242]">
+                    <Link className="flex gap-1">
+                      <MdBrowserUpdated />
+                      Update
+                    </Link>
+                  </button>
+                </td>
+                <td>
+                  <button className="btn bg-[#7ec242] text-black hover:text-[#7ec242]">
+                    <Link className="flex gap-1">
+                      <FcDeleteDatabase />
+                      Delete
+                    </Link>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      {filters.length === 0 && (
+        <div className="flex flex-col justify-center items-center lg:min-h-[calc(100vh-500px)] space-y-3 my-5">
+          <img
+            className="w-36"
+            src={"https://i.ibb.co/0ttkf0m/pngegg.png"}
+            alt=""
+          />
+          <h1 className="font-semibold text-lg">
+            You do not added any volunteer post
+          </h1>
+          <p className="text-sm font-semibold">Please add first</p>
+          <Link to="/addArtCraft">
+            <button className="rounded-md border bg-[#9ADE7B] font-bold px-2 md:px-4 py-2  duration-300 hover:bg-gray-200">
+              Add Volunteer Post
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
