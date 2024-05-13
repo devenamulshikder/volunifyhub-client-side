@@ -4,15 +4,12 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
-import { useLoaderData, useParams } from "react-router-dom";
+// import axios from "axios";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdatePage = () => {
   const data = useLoaderData();
-  const { id } = useParams();
-
-  console.log(data, id);
-
+const navigate = useNavigate()
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
   const handleAddVolunteerItem = (event) => {
@@ -44,25 +41,23 @@ const UpdatePage = () => {
       description,
     };
 
-    // axios
-    //   .post("http://localhost:9000/volunteerPost", newVolunteer)
-
-    //   .then((data) => {
-    //     if (data.data.insertedId) {
-    //       form.reset("");
-    //       toast.success("Successfully Craft Added!");
-    //     }
-    //   });
-
-    axios
-      .put(`http://localhost:9000/updatePage/${id}`, updateVolunteer)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          toast.success("sufodsjf");
-        } else {
-          toast.error("Already Added Updated");
+    fetch(`http://localhost:9000/updatePage/${data?._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateVolunteer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Successfully Volunteer Updated!");
+          navigate("/manageMyPost/:email");
         }
-      });
+
+      })
+      .catch(err=>toast.error(err))
+
   };
 
   return (
@@ -78,6 +73,7 @@ const UpdatePage = () => {
               type="text"
               name="PostTitle"
               placeholder="Post Title"
+              defaultValue={data.PostTitle}
               required
               className="input input-bordered w-full"
             />
@@ -88,6 +84,7 @@ const UpdatePage = () => {
             <select
               type="text"
               name="Category"
+              defaultValue={data.Category}
               required
               className=" p-3 rounded-lg border w-full"
             >
@@ -104,6 +101,7 @@ const UpdatePage = () => {
             <input
               type="text"
               name="Location"
+              defaultValue={data.Location}
               placeholder="Location"
               required
               className="input input-bordered w-full"
@@ -116,6 +114,7 @@ const UpdatePage = () => {
               className="input input-bordered"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
+              defaultValue={data.date}
             />
           </div>
         </div>
@@ -130,6 +129,7 @@ const UpdatePage = () => {
               name="needed"
               placeholder="No. Of Volunteer Need"
               required
+              defaultValue={data.No_of_volunteers_needed}
               className="input input-bordered w-full"
             />
           </div>
@@ -140,6 +140,7 @@ const UpdatePage = () => {
               type="text"
               name="Thumbnail"
               placeholder="Thumbnail"
+              defaultValue={data.Thumbnail}
               required
               className="input input-bordered w-full"
             />
@@ -174,13 +175,14 @@ const UpdatePage = () => {
             className="textarea textarea-bordered w-full"
             name="description"
             required
+            defaultValue={data.description}
             placeholder="Sort Description"
           ></textarea>
         </div>
         <input
           type="submit"
           value="Update Volunteer"
-          className="btn btn-block bg-[#7ec242]"
+          className="btn btn-block text-black bg-[#7ec249]  hover:bg-[#7ec242]"
         />
       </form>
     </div>

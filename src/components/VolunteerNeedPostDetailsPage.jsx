@@ -108,12 +108,9 @@ const VolunteerNeedPostDetailsPage = () => {
                 No. of volunteers needed :{" "}
                 {needVolunteerPost?.No_of_volunteers_needed}
               </h1>
-
               <div className="flex justify-center">
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                {needVolunteerPost.No_of_volunteers_needed < 1 ? (
-                  toast.error("No volunteer Needed for this post..")
-                ) : (
+               
                   <button
                     className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
                     onClick={() =>
@@ -122,7 +119,7 @@ const VolunteerNeedPostDetailsPage = () => {
                   >
                     Be a Volunteer
                   </button>
-                )}
+     
                 <dialog
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
