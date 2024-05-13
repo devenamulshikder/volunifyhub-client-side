@@ -5,18 +5,30 @@ import { Link } from "react-router-dom";
 const NeedVolunteer = () => {
   const [allVolunteer, setAllVolunteer] = useState([]);
   const [search, setSearch] = useState("");
+  const [filteredVolunteer, setFilteredVolunteer] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:9000/allPost")
       .then((res) => res.json())
-      .then((data) => setAllVolunteer(data));
+      .then((data) => {
+        setAllVolunteer(data);
+        setFilteredVolunteer(data);
+      });
   }, []);
+
+  useEffect(() => {
+    const filtered = allVolunteer.filter((volunteer) =>
+      volunteer.PostTitle.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredVolunteer(filtered);
+  }, [search, allVolunteer]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const text = e.target.search.value;
     setSearch(text);
   };
-  console.log(search);
+
   return (
     <div className="max-w-7xl mx-auto p-4">
       <Helmet>
@@ -40,7 +52,7 @@ const NeedVolunteer = () => {
         </div>
       </form>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-12">
-        {allVolunteer.map((volunteer) => (
+        {filteredVolunteer.map((volunteer) => (
           <div key={volunteer._id} className="hover:scale-105 duration-700">
             <div className=" p-6 rounded-md shadow-xl bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-900">
               <img

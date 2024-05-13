@@ -13,6 +13,10 @@ const VolunteerNeedPostDetailsPage = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const showErrorMsg = () => {
+    toast.error("No Need Volunteers This Post...");
+  };
+
   const {
     userName,
     userEmail,
@@ -105,12 +109,12 @@ const VolunteerNeedPostDetailsPage = () => {
                 Location : {needVolunteerPost?.Location}
               </h1>
               <h1 className="text-sm md:text-lg font-semibold">
-                No. of volunteers needed :{" "}
+                No. of volunteers needed :
                 {needVolunteerPost?.No_of_volunteers_needed}
               </h1>
+
               <div className="flex justify-center">
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
-               
+                {needVolunteerPost?.No_of_volunteers_needed !== 0 ? (
                   <button
                     className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
                     onClick={() =>
@@ -119,7 +123,17 @@ const VolunteerNeedPostDetailsPage = () => {
                   >
                     Be a Volunteer
                   </button>
-     
+                ) : (
+                  <>
+                    <button
+                      className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
+                      onClick={showErrorMsg}
+                    >
+                      Be a Volunteer
+                    </button>
+                  </>
+                )}
+
                 <dialog
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
