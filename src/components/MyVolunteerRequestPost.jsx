@@ -52,7 +52,7 @@ const MyVolunteerRequestPost = () => {
 
   return (
     <div>
-      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-center mb-8 md:mb-12 lg:mb-16">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-12 my-16">
         My Volunteer Request Post
       </h1>
 

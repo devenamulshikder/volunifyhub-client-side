@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 
 const VolunteerNeedDetails = () => {
   const viewData = useLoaderData();
   return (
     <div className="max-w-7xl mx-auto my-8 md:my-12 lg:my-16">
+      <Helmet>
+        <title>Volunify || Card View Details</title>
+      </Helmet>
       <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center">
         View Details
       </h1>

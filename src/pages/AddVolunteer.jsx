@@ -5,10 +5,13 @@ import { AuthContext } from "../provider/AuthProvider";
 
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddVolunteer = () => {
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate()
   const handleAddVolunteerItem = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -44,6 +47,7 @@ const AddVolunteer = () => {
       .then((data) => {
         if (data.data.insertedId) {
           form.reset("");
+          navigate('/')
           toast.success("Successfully Craft Added!");
         }
       });
@@ -51,6 +55,9 @@ const AddVolunteer = () => {
 
   return (
     <div className=" max-w-7xl mx-auto p-5 lg:p-10 rounded-xl mt-8 lg:mt-16">
+      <Helmet>
+        <title>Volunify || Add Volunteer Post</title>
+      </Helmet>
       <h1 className="text-4xl font-extrabold text-center mb-5">
         Add Volunteer Post Page
       </h1>

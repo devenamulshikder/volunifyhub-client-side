@@ -5,6 +5,7 @@ import { MdBrowserUpdated } from "react-icons/md";
 import { FcDeleteDatabase } from "react-icons/fc";
 import Swal from "sweetalert2";
 import MyVolunteerRequestPost from "../components/MyVolunteerRequestPost";
+import { Helmet } from "react-helmet-async";
 const ManageMyPost = () => {
   const { user } = useContext(AuthContext);
 
@@ -54,6 +55,9 @@ const ManageMyPost = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
+      <Helmet>
+        <title>Volunify || Manage My Post</title>
+      </Helmet>
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center my-12 md:my-12 lg:my-16">
         My Need Volunteer Post
       </h1>

@@ -4,9 +4,15 @@ import VolunteerNeeds from "../components/VolunteerNeeds";
 import "animate.css";
 import VolunteersBrighter from "../components/VolunteersBrighter";
 import AboutUs from "../components/AboutUs";
+import { Helmet } from "react-helmet-async";
 const Home = () => {
   return (
     <>
+    <Helmet>
+      <title>
+        Volunify || Home
+      </title>
+    </Helmet>
       <Banner />
       <div className="max-w-7xl mx-auto my-8 md:my-12 lg:my-16">
         <h1 className="text-lg md:text-2xl lg:text-5xl text-center lato font-bold">

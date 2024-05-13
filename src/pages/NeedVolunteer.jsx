@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const NeedVolunteer = () => {
@@ -18,6 +19,9 @@ const NeedVolunteer = () => {
   console.log(search);
   return (
     <div className="max-w-7xl mx-auto p-4">
+      <Helmet>
+        <title>Volunify || Need Volunteer Page</title>
+      </Helmet>
       <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center my-8 md:my-12">
         Need Volunteer Page
       </h1>

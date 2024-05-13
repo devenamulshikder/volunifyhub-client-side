@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const VolunteerNeedPostDetailsPage = () => {
   const needVolunteerPost = useLoaderData();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     userName,
@@ -50,23 +52,25 @@ const VolunteerNeedPostDetailsPage = () => {
       No_of_volunteers_needed,
       Thumbnail,
       description,
-      status:'Requested'
+      status: "Requested",
     };
-    
 
     axios
       .post("http://localhost:9000/volunteerRequested", requestVolunteer)
       .then((data) => {
         if (data.data.insertedId) {
           form.reset("");
+          navigate("/needVolunteer");
           toast.success("Successfully Craft Added!");
         }
       });
-
   };
 
   return (
     <div className="max-w-7xl mx-auto">
+      <Helmet>
+        <title>Volunify || Volunteer Need Post Details</title>
+      </Helmet>
       <div className="my-8 md:my-12 lg:mt-16">
         <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center">
           Volunteer Need Post Details Page
@@ -107,14 +111,18 @@ const VolunteerNeedPostDetailsPage = () => {
 
               <div className="flex justify-center">
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
-                  onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
-                  }
-                >
-                  Be a Volunteer
-                </button>
+                {needVolunteerPost.No_of_volunteers_needed < 1 ? (
+                  toast.error("No volunteer Needed for this post..")
+                ) : (
+                  <button
+                    className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
+                    onClick={() =>
+                      document.getElementById("my_modal_5").showModal()
+                    }
+                  >
+                    Be a Volunteer
+                  </button>
+                )}
                 <dialog
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
@@ -126,10 +134,6 @@ const VolunteerNeedPostDetailsPage = () => {
                         <h1 className="text-4xl font-extrabold text-center mb-5">
                           Be a Volunteer..!
                         </h1>
-
-
-
-
 
                         <form onSubmit={handleBeAVolunteer}>
                           <div className="md:flex gap-5 mb-6">
