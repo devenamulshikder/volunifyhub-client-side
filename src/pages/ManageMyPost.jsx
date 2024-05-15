@@ -14,7 +14,7 @@ const ManageMyPost = () => {
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:9000/manageMyPost/${user.email}`)
+    fetch(`https://volunify-hub-server.vercel.app/manageMyPost/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setFilter(data);
@@ -33,7 +33,7 @@ const ManageMyPost = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:9000/updatePage/${id}`, {
+        fetch(`https://volunify-hub-server.vercel.app/updatePage/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

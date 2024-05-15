@@ -52,7 +52,7 @@ const Register = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      toast.success("Signin Successful");
+      toast.success("Google Login Successful");
       navigate("/");
     } catch (err) {
       toast.error(err?.message);

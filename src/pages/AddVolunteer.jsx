@@ -42,7 +42,7 @@ const AddVolunteer = () => {
     };
 
     axios
-      .post("http://localhost:9000/volunteerPost", newVolunteer)
+      .post("https://volunify-hub-server.vercel.app/volunteerPost", newVolunteer)
 
       .then((data) => {
         if (data.data.insertedId) {

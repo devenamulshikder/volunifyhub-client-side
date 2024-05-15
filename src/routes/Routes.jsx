@@ -62,7 +62,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:9000/volunteerNeedDetails/${params.id}`),
+          fetch(`https://volunify-hub-server.vercel.app/volunteerNeedDetails/${params.id}`),
       },
       {
         path: "/VolunteerNeedPostDetailsPage/:id",
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:9000/VolunteerNeedPostDetailsPage/${params.id}`
+            `https://volunify-hub-server.vercel.app/VolunteerNeedPostDetailsPage/${params.id}`
           ),
       },
       {
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
             <UpdatePage />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:9000/updatePage/${params.id}`),
+        loader: ({ params }) => fetch(`https://volunify-hub-server.vercel.app/updatePage/${params.id}`),
       },
     ],
   },

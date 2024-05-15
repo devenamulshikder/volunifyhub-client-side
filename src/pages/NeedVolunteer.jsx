@@ -7,10 +7,9 @@ const NeedVolunteer = () => {
   const [allVolunteer, setAllVolunteer] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredVolunteer, setFilteredVolunteer] = useState([]);
-  const [viewMode, setViewMode] = useState("card"); // New state for view mode
-
+  const [viewMode, setViewMode] = useState("card");
   useEffect(() => {
-    fetch("http://localhost:9000/allPost")
+    fetch("https://volunify-hub-server.vercel.app/allPost")
       .then((res) => res.json())
       .then((data) => {
         setAllVolunteer(data);

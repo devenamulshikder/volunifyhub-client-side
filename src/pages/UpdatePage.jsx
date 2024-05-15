@@ -41,7 +41,7 @@ const navigate = useNavigate()
       description,
     };
 
-    fetch(`http://localhost:9000/updatePage/${data?._id}`, {
+    fetch(`https://volunify-hub-server.vercel.app/updatePage/${data?._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

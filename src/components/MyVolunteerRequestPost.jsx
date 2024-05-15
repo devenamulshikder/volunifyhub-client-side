@@ -11,7 +11,7 @@ const MyVolunteerRequestPost = () => {
   const [cancelRequest, setCancelRequest] = useState([]);
 
   useEffect(() => {
-    axios(`http://localhost:9000/requestedVolunteer/${user.email}`).then(
+    axios(`https://volunify-hub-server.vercel.app/requestedVolunteer/${user.email}`).then(
       (data) => {
         setRequestedUser(data.data);
         setCancelRequest(data.data);
@@ -30,12 +30,11 @@ const MyVolunteerRequestPost = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:9000/requestedVolunteer/${id}`, {
+        fetch(`https://volunify-hub-server.vercel.app/requestedVolunteer/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",

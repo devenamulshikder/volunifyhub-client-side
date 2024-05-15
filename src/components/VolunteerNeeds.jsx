@@ -8,7 +8,7 @@ const VolunteerNeeds = () => {
   // const [sort, setSort]= useState('')
 
   useEffect(() => {
-    fetch("http://localhost:9000/allPost")
+    fetch("https://volunify-hub-server.vercel.app/allPost")
       .then((res) => res.json())
       .then((data) => {
         setAllPost(data);
