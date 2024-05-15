@@ -48,7 +48,7 @@ const AddVolunteer = () => {
         if (data.data.insertedId) {
           form.reset("");
           navigate('/')
-          toast.success("Successfully Craft Added!");
+          toast.success("Successfully Volunteer Added!");
         }
       });
   };

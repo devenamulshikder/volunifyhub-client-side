@@ -26,24 +26,21 @@ const VolunteerNeedPostDetailsPage = () => {
     date,
     No_of_volunteers_needed,
     Thumbnail,
-    // description,
+    description,
   } = needVolunteerPost;
 
   const handleBeAVolunteer = (event) => {
     event.preventDefault();
     const form = event.target;
+
     const userName = user.displayName;
     const userEmail = user.email;
-
     const PostTitle = form.PostTitle.value;
     const Category = form.Category.value;
-
     const Location = form.Location.value;
     const date = startDate;
-
     const No_of_volunteers_needed = form.needed.value;
     const Thumbnail = form.Thumbnail.value;
-
     const description = form.description.value;
 
     const requestVolunteer = {
@@ -60,14 +57,31 @@ const VolunteerNeedPostDetailsPage = () => {
     };
 
     axios
-      .post("https://volunify-hub-server.vercel.app/volunteerRequested", requestVolunteer)
+      .post(
+        "https://volunify-hub-server.vercel.app/volunteerRequested",
+        requestVolunteer
+      )
       .then((data) => {
         if (data.data.insertedId) {
-          form.reset("");
-          navigate("/needVolunteer");
-          toast.success("Successfully Craft Added!");
+          // Decrease the number of volunteers needed
+          axios
+            .patch(
+              `https://volunify-hub-server.vercel.app/updateVolunteerCount/${needVolunteerPost._id}`
+            )
+            .then(() => {
+              form.reset();
+              navigate("/needVolunteer");
+              toast.success("Successfully Requested to Volunteer!");
+            })
+            .catch((error) => {
+              toast.error("Failed to update the volunteer count.");
+            });
         }
+      })
+      .catch((error) => {
+        toast.error("Failed to submit the request.");
       });
+
   };
 
   return (
@@ -82,39 +96,34 @@ const VolunteerNeedPostDetailsPage = () => {
 
         <div className="flex flex-col lg:flex-row gap-10 mt-8 lg:mt-24 lg:ml-16 p-4">
           <div className="flex-1 max-w-lg">
-            <img src={needVolunteerPost?.Thumbnail} alt="" />
+            <img src={Thumbnail} alt={PostTitle} />
           </div>
           <div className="space-y-3 flex-1">
-            <h1 className="text-lg md:text-xl font-bold">
-              {needVolunteerPost?.PostTitle}
-            </h1>
+            <h1 className="text-lg md:text-xl font-bold">{PostTitle}</h1>
 
             <p className="text-sm md:text-lg font-bold w-full lg:w-2/3">
-              Description :
+              Description:
               <span className="text-xs md:text-lg font-medium">
-                {needVolunteerPost?.description}
+                {description}
               </span>
             </p>
             <div className="space-y-3">
               <h1 className="text-sm md:text-lg font-semibold">
-                Category:{" "}
-                <span className="text-lg">{needVolunteerPost?.Category}</span>
+                Category: <span className="text-lg">{Category}</span>
               </h1>
               <h1 className="text-xs md:text-lg font-semibold">
-                Date: {new Date(needVolunteerPost?.date).toLocaleDateString()}
+                Date: {new Date(date).toLocaleDateString()}
               </h1>
 
               <h1 className="text-lg md:text-lg font-semibold">
-                {" "}
-                Location : {needVolunteerPost?.Location}
+                Location: {Location}
               </h1>
               <h1 className="text-sm md:text-lg font-semibold">
-                No. of volunteers needed :
-                {needVolunteerPost?.No_of_volunteers_needed}
+                No. of volunteers needed: {No_of_volunteers_needed}
               </h1>
 
               <div className="flex justify-center">
-                {needVolunteerPost?.No_of_volunteers_needed !== 0 ? (
+                {No_of_volunteers_needed !== 0 ? (
                   <button
                     className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
                     onClick={() =>
@@ -124,24 +133,21 @@ const VolunteerNeedPostDetailsPage = () => {
                     Be a Volunteer
                   </button>
                 ) : (
-                  <>
-                    <button
-                      className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
-                      onClick={showErrorMsg}
-                    >
-                      Be a Volunteer
-                    </button>
-                  </>
+                  <button
+                    className="btn bg-[#7ec242] text-black hover:text-[#7ec242]"
+                    onClick={showErrorMsg}
+                  >
+                    Be a Volunteer
+                  </button>
                 )}
 
                 <dialog
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
                 >
-                  {" "}
                   <div className="modal-box">
                     <div className="modal-action">
-                      <div className=" p-5 lg:p-10 rounded-xl">
+                      <div className="p-5 lg:p-10 rounded-xl">
                         <h1 className="text-4xl font-extrabold text-center mb-5">
                           Be a Volunteer..!
                         </h1>
@@ -149,7 +155,7 @@ const VolunteerNeedPostDetailsPage = () => {
                         <form onSubmit={handleBeAVolunteer}>
                           <div className="md:flex gap-5 mb-6">
                             <div className="md:w-1/2">
-                              <label className="label"> Post Title</label>
+                              <label className="label">Post Title</label>
                               <input
                                 type="text"
                                 name="PostTitle"
@@ -164,12 +170,11 @@ const VolunteerNeedPostDetailsPage = () => {
                             <div className="md:w-1/2">
                               <label className="label">Category</label>
                               <select
-                                type="text"
                                 name="Category"
                                 defaultValue={Category}
                                 disabled
                                 required
-                                className=" p-3 rounded-lg border w-full"
+                                className="p-3 rounded-lg border w-full"
                               >
                                 <option>Healthcare</option>
                                 <option>Education</option>
@@ -202,7 +207,6 @@ const VolunteerNeedPostDetailsPage = () => {
                               />
                             </div>
                           </div>
-                          {/* form cetagory row  */}
                           <div className="md:flex gap-5 mb-6">
                             <div className="md:w-1/2">
                               <label className="label">
@@ -234,38 +238,36 @@ const VolunteerNeedPostDetailsPage = () => {
                             </div>
                           </div>
 
-                          {/* Current User */}
                           <div className="md:flex gap-5 mb-6">
                             <div className="md:w-1/2">
                               <label className="label">User Name</label>
                               <input
-                                defaultValue={user?.displayName}
                                 type="text"
+                                defaultValue={user.displayName}
                                 disabled
+                                placeholder="User Name"
                                 className="input input-bordered w-full"
                               />
                             </div>
                             <div className="md:w-1/2">
-                              <label className="label">User email</label>
+                              <label className="label">User Email</label>
                               <input
                                 type="text"
-                                defaultValue={user?.email}
+                                defaultValue={user.email}
                                 disabled
-                                placeholder="Enter processing time (hour)"
+                                placeholder="User Email"
                                 className="input input-bordered w-full"
                               />
                             </div>
                           </div>
-
-                          {/* Organizer */}
-
                           <div className="md:flex gap-5 mb-6">
                             <div className="md:w-1/2">
                               <label className="label">Organizer Name</label>
                               <input
-                                defaultValue={userName}
                                 type="text"
+                                defaultValue={userName}
                                 disabled
+                                placeholder="Enter processing time (hour)"
                                 className="input input-bordered w-full"
                               />
                             </div>
@@ -281,7 +283,6 @@ const VolunteerNeedPostDetailsPage = () => {
                             </div>
                           </div>
 
-                          {/* photo url*/}
                           <div className="mb-6">
                             <label>Suggestion</label>
                             <textarea
@@ -300,8 +301,7 @@ const VolunteerNeedPostDetailsPage = () => {
                       </div>
                     </div>
                     <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn  ">Close</button>
+                      <button className="btn">Close</button>
                     </form>
                   </div>
                 </dialog>
