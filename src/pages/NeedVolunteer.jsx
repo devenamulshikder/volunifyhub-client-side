@@ -40,7 +40,7 @@ const NeedVolunteer = () => {
       <Helmet>
         <title>Volunify || Need Volunteer Page</title>
       </Helmet>
-      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center  md:my-12">
+      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center md:mt-12">
         Need Volunteer Page
       </h1>
       <div className="flex justify-start md:justify-end lg:justify-end p-2">
@@ -61,12 +61,14 @@ const NeedVolunteer = () => {
             </button>
           </div>
         </form>
-        <div className="flex items-center">
-          <MdTableRows
-            size={40}
-            onClick={toggleViewMode}
-            style={{ cursor: "pointer" }}
-          />
+        <div className=" flex items-center">
+          <button className=" hover:scale-105 duration-30000">
+            <MdTableRows
+              size={40}
+              onClick={toggleViewMode}
+              style={{ cursor: "pointer" }}
+            />
+          </button>
         </div>
       </div>
 
@@ -151,7 +153,7 @@ const NeedVolunteer = () => {
                   <td>{new Date(table.date).toLocaleDateString()}</td>
                   <th>
                     <Link to={`/VolunteerNeedPostDetailsPage/${table?._id}`}>
-                      <button className="btn btn-ghost bg-[#7ec242] btn-xs">
+                      <button className="btn btn-ghost bg-[#7ec242] text-black btn-xs">
                         details
                       </button>
                     </Link>
