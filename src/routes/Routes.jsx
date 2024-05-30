@@ -11,6 +11,7 @@ import VolunteerNeedDetails from "../components/VolunteerNeedDetails";
 import VolunteerNeedPostDetailsPage from "../components/VolunteerNeedPostDetailsPage";
 import ManageMyPost from "../pages/ManageMyPost";
 import UpdatePage from "../pages/UpdatePage";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) => fetch(`https://volunify-hub-server.vercel.app/updatePage/${params.id}`),
       },
+      {
+        path:'/update-profile',
+        element:<UpdateProfile/>
+      }
     ],
   },
 ]);

@@ -113,6 +113,10 @@ const NavBar = () => {
                 <li>
                   <Link to="/manageMyPost/:email">Manage My Post</Link>
                 </li>
+                <li>
+                  <Link to="/update-profile">Update Your Profile</Link>
+                </li>
+
                 <li className="mt-2">
                   <button
                     onClick={handleLogOut}
